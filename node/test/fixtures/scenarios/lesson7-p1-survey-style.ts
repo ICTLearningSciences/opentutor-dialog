@@ -1,156 +1,20 @@
-/*
-This software is Copyright ©️ 2020 The University of Southern California. All Rights Reserved. 
-Permission to use, copy, modify, and distribute this software and its documentation for educational, research and non-profit purposes, without fee, and without a written agreement is hereby granted, provided that the above copyright notice and subject to the full license file found in the root of this software deliverable. Permission to make commercial use of this software may be obtained by contacting:  USC Stevens Center for Innovation University of Southern California 1150 S. Olive Street, Suite 2300, Los Angeles, CA 90115, USA Email: accounting@stevens.usc.edu
-
-The full terms of this copyright and license should always be found in the root directory of this software deliverable as "license.txt" and if these terms are not found with this software, please contact the USC Stevens Center for the full license.
-*/
 import { DialogScenario } from 'test/fixtures/types';
 import { Evaluation } from 'apis/classifier';
 import { ResponseType } from 'dialog/response-data';
 
 export const scenario: DialogScenario = {
-  name: 'suicide prevention bystander training - uses sensitive negative responses for lesson marked as sensistive',
-  lessonId: 'q5',
+  name: 'navy integrity training - survey says style with many bad responses',
+  lessonId: 'q7',
   expectedRequestResponses: [
     {
-      userInput:
-        "losing it doesn't affect anything. you can't stop people who made up their mind",
+      userInput: 'Rules apply differently to the group',
       mockClassifierResponse: {
         data: {
           output: {
             expectationResults: [
-              { expectationId: '0', evaluation: Evaluation.Bad, score: 0.8 },
+              { expectationId: '0', evaluation: Evaluation.Bad, score: 1.0 },
               { expectationId: '1', evaluation: Evaluation.Good, score: 0.5 },
-            ],
-            speechActs: {
-              metacognitive: {
-                expectationId: '',
-                evaluation: Evaluation.Good,
-                score: 0.5,
-              },
-              profanity: {
-                expectationId: '',
-                evaluation: Evaluation.Good,
-                score: 0.5,
-              },
-            },
-          },
-        },
-      },
-      expectedResponse: [
-        {
-          author: 'them',
-          type: ResponseType.FeedbackNeutral,
-          data: {
-            text: 'Ok.',
-          },
-        },
-        {
-          author: 'them',
-          type: ResponseType.Text,
-          data: {
-            text: 'Consider this.',
-          },
-        },
-        {
-          author: 'them',
-          type: ResponseType.Hint,
-          data: {
-            text: 'Compared to when they knew a clear way to commit suicide, does their long term suicide risk change?',
-          },
-        },
-      ],
-    },
-    {
-      userInput: "it doesn't, you wouldn't be affected",
-      mockClassifierResponse: {
-        data: {
-          output: {
-            expectationResults: [
-              { expectationId: '0', evaluation: Evaluation.Bad, score: 0.7 },
-              { expectationId: '1', evaluation: Evaluation.Good, score: 0.5 },
-            ],
-            speechActs: {
-              metacognitive: {
-                expectationId: '',
-                evaluation: Evaluation.Good,
-                score: 0.5,
-              },
-              profanity: {
-                expectationId: '',
-                evaluation: Evaluation.Good,
-                score: 0.5,
-              },
-            },
-          },
-        },
-      },
-      expectedResponse: [
-        {
-          author: 'them',
-          type: ResponseType.FeedbackNeutral,
-          data: {
-            text: 'Ok.',
-          },
-        },
-        {
-          author: 'them',
-          type: ResponseType.Hint,
-          data: {
-            text: 'Are they more likely to just "find another way" or to not attempt suicide later?',
-          },
-        },
-      ],
-    },
-    {
-      userInput: 'they will',
-      mockClassifierResponse: {
-        data: {
-          output: {
-            expectationResults: [
-              { expectationId: '0', evaluation: Evaluation.Bad, score: 0.7 },
-              { expectationId: '1', evaluation: Evaluation.Good, score: 0.5 },
-            ],
-            speechActs: {
-              metacognitive: {
-                expectationId: '',
-                evaluation: Evaluation.Good,
-                score: 0.5,
-              },
-              profanity: {
-                expectationId: '',
-                evaluation: Evaluation.Good,
-                score: 0.5,
-              },
-            },
-          },
-        },
-      },
-      expectedResponse: [
-        {
-          author: 'them',
-          type: ResponseType.FeedbackNeutral,
-          data: {
-            text: 'Ok.',
-          },
-        },
-        {
-          author: 'them',
-          type: ResponseType.Hint,
-          data: {
-            text: 'Compared to before they lost their means to commit suicide (e.g., a gun), how does their risk change?',
-          },
-        },
-      ],
-    },
-    {
-      userInput: "their risk doesn't change",
-      mockClassifierResponse: {
-        data: {
-          output: {
-            expectationResults: [
-              { expectationId: '0', evaluation: Evaluation.Bad, score: 0.7 },
-              { expectationId: '1', evaluation: Evaluation.Good, score: 0.5 },
+              { expectationId: '2', evaluation: Evaluation.Good, score: 0.5 },
             ],
             speechActs: {
               metacognitive: {
@@ -172,33 +36,27 @@ export const scenario: DialogScenario = {
           author: 'them',
           type: ResponseType.FeedbackNegative,
           data: {
-            text: "I'm not sure about that.",
-          },
-        },
-        {
-          author: 'them',
-          type: ResponseType.Text,
-          data: {
-            text: 'They will be much less likely to commit suicide and will probably not attempt suicide later.',
+            text: "Sorry, it looks like that wasn't on the board.",
           },
         },
         {
           author: 'them',
           type: ResponseType.Hint,
           data: {
-            text: 'Compared to other people, how likely is this person to commit suicide?',
+            text: 'Why might you allow bad behavior in a group that you normally would not allow yourself to do?',
           },
         },
       ],
     },
     {
-      userInput: "They aren't as likely",
+      userInput: "I wouldn't",
       mockClassifierResponse: {
         data: {
           output: {
             expectationResults: [
-              { expectationId: '0', evaluation: Evaluation.Bad, score: 0.5 },
-              { expectationId: '1', evaluation: Evaluation.Bad, score: 0.8 },
+              { expectationId: '0', evaluation: Evaluation.Bad, score: 1.0 },
+              { expectationId: '1', evaluation: Evaluation.Good, score: 0.5 },
+              { expectationId: '2', evaluation: Evaluation.Good, score: 0.5 },
             ],
             speechActs: {
               metacognitive: {
@@ -218,28 +76,29 @@ export const scenario: DialogScenario = {
       expectedResponse: [
         {
           author: 'them',
-          type: ResponseType.FeedbackNeutral,
+          type: ResponseType.FeedbackNegative,
           data: {
-            text: 'Ok.',
+            text: "Sorry, it looks like that wasn't on the board.",
           },
         },
         {
           author: 'them',
-          type: ResponseType.Hint,
+          type: ResponseType.Prompt,
           data: {
-            text: 'After removing the means for suicide, how likely are they to commit suicide versus other people?',
+            text: 'What might cause you to lower your standards?',
           },
         },
       ],
     },
     {
-      userInput: 'they are the same likely',
+      userInput: 'There is nothing that would cause me to lower my standards.',
       mockClassifierResponse: {
         data: {
           output: {
             expectationResults: [
-              { expectationId: '0', evaluation: Evaluation.Bad, score: 0.5 },
-              { expectationId: '1', evaluation: Evaluation.Bad, score: 0.7 },
+              { expectationId: '0', evaluation: Evaluation.Bad, score: 1.0 },
+              { expectationId: '1', evaluation: Evaluation.Good, score: 0.5 },
+              { expectationId: '2', evaluation: Evaluation.Good, score: 0.5 },
             ],
             speechActs: {
               metacognitive: {
@@ -259,29 +118,211 @@ export const scenario: DialogScenario = {
       expectedResponse: [
         {
           author: 'them',
-          type: ResponseType.FeedbackNeutral,
+          type: ResponseType.Text,
           data: {
-            text: 'Ok.',
+            text: "We'll give you this one on the board.",
           },
         },
         {
           author: 'them',
           type: ResponseType.Text,
           data: {
-            text: 'The person is still at risk compared to other people.',
+            text: 'Consider this.',
+          },
+        },
+        {
+          author: 'them',
+          type: ResponseType.Hint,
+          data: {
+            text: 'How can it affect someone when you correct their behavior?',
+          },
+        },
+      ],
+    },
+    {
+      userInput: 'There is no affect',
+      mockClassifierResponse: {
+        data: {
+          output: {
+            expectationResults: [
+              { expectationId: '0', evaluation: Evaluation.Good, score: 0.5 },
+              { expectationId: '1', evaluation: Evaluation.Bad, score: 1.0 },
+              { expectationId: '2', evaluation: Evaluation.Good, score: 0.5 },
+            ],
+            speechActs: {
+              metacognitive: {
+                expectationId: '',
+                evaluation: Evaluation.Good,
+                score: 0.5,
+              },
+              profanity: {
+                expectationId: '',
+                evaluation: Evaluation.Good,
+                score: 0.5,
+              },
+            },
+          },
+        },
+      },
+      expectedResponse: [
+        {
+          author: 'them',
+          type: ResponseType.FeedbackNegative,
+          data: {
+            text: "Sorry, it looks like that wasn't on the board.",
+          },
+        },
+        {
+          author: 'them',
+          type: ResponseType.Prompt,
+          data: {
+            text: 'How can it affect someone emotionally when you correct their behavior?',
+          },
+        },
+      ],
+    },
+    {
+      userInput: 'They will not be affected at all',
+      mockClassifierResponse: {
+        data: {
+          output: {
+            expectationResults: [
+              { expectationId: '0', evaluation: Evaluation.Good, score: 0.5 },
+              { expectationId: '1', evaluation: Evaluation.Bad, score: 1.0 },
+              { expectationId: '2', evaluation: Evaluation.Good, score: 0.5 },
+            ],
+            speechActs: {
+              metacognitive: {
+                expectationId: '',
+                evaluation: Evaluation.Good,
+                score: 0.5,
+              },
+              profanity: {
+                expectationId: '',
+                evaluation: Evaluation.Good,
+                score: 0.5,
+              },
+            },
+          },
+        },
+      },
+      expectedResponse: [
+        {
+          author: 'them',
+          type: ResponseType.Text,
+          data: {
+            text: "We'll give you this one on the board.",
+          },
+        },
+        {
+          author: 'them',
+          type: ResponseType.Hint,
+          data: {
+            text: "How can it affect you when you correct someone's behavior?",
+          },
+        },
+      ],
+    },
+    {
+      userInput: "they won't view me any differently",
+      mockClassifierResponse: {
+        data: {
+          output: {
+            expectationResults: [
+              { expectationId: '0', evaluation: Evaluation.Good, score: 0.5 },
+              { expectationId: '1', evaluation: Evaluation.Bad, score: 0.5 },
+              { expectationId: '2', evaluation: Evaluation.Bad, score: 1.0 },
+            ],
+            speechActs: {
+              metacognitive: {
+                expectationId: '',
+                evaluation: Evaluation.Good,
+                score: 0.5,
+              },
+              profanity: {
+                expectationId: '',
+                evaluation: Evaluation.Good,
+                score: 0.5,
+              },
+            },
+          },
+        },
+      },
+      expectedResponse: [
+        {
+          author: 'them',
+          type: ResponseType.FeedbackNegative,
+          data: {
+            text: "Sorry, it looks like that wasn't on the board.",
+          },
+        },
+        {
+          author: 'them',
+          type: ResponseType.Prompt,
+          data: {
+            text: 'Integrity means doing the right thing even when it is _____ ?',
+          },
+        },
+      ],
+    },
+    {
+      userInput: "You don't have to do the right thing",
+      mockClassifierResponse: {
+        data: {
+          output: {
+            expectationResults: [
+              { expectationId: '0', evaluation: Evaluation.Good, score: 0.5 },
+              { expectationId: '1', evaluation: Evaluation.Bad, score: 0.5 },
+              { expectationId: '2', evaluation: Evaluation.Bad, score: 1.0 },
+            ],
+            speechActs: {
+              metacognitive: {
+                expectationId: '',
+                evaluation: Evaluation.Good,
+                score: 0.5,
+              },
+              profanity: {
+                expectationId: '',
+                evaluation: Evaluation.Good,
+                score: 0.5,
+              },
+            },
+          },
+        },
+      },
+      expectedResponse: [
+        {
+          author: 'them',
+          type: ResponseType.Text,
+          data: {
+            text: "We'll give you this one on the board.",
+          },
+        },
+        {
+          author: 'them',
+          type: ResponseType.FeedbackNegative,
+          data: {
+            text: 'Try again next time and see if you can get all the answers.',
           },
         },
         {
           author: 'them',
           data: {
-            text: 'Most people do not attempt suicide again if their plan is interrupted or if they survive a suicide attempt. This means that removing guns, pills, or other ways to commit suicide are very important.',
+            text: 'Peer pressure can push you to allow and participate in inappropriate behavior.',
           },
           type: 'closing',
         },
         {
           author: 'them',
           data: {
-            text: 'However, a person with suicidal thoughts is still at-risk and they should receive professional help to decrease their risk and improve their quality of life.',
+            text: "When you correct somone's behavior, you may get them in trouble or negatively impact your relationship with them.",
+          },
+          type: 'closing',
+        },
+        {
+          author: 'them',
+          data: {
+            text: 'However, integrity means speaking out even when it is unpopular.',
           },
           type: 'closing',
         },
